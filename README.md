@@ -20,6 +20,15 @@ The objective of this project is to develop a smart wearable system capable of d
 - IoT Concepts
 - Sensor Integration
 - Arduino IDE
+  
+## Components
+1. ESP32 Development Board	
+2. Flex Sensors	
+3. 16x2 I2C LCD	
+4. PCB/Terminal Board	
+5. Jumper Wires	
+6. USB Cable	
+7. Glove
 
 ## Working Principle
 The wearable device detects predefined hand gestures using sensor-based input. The ESP32 processes the received signals and maps them to corresponding text or voice outputs. The processed output can then be displayed or converted into speech for communication purposes.
