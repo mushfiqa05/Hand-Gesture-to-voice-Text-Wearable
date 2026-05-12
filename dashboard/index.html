@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign2Speech Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1>Sign2Speech</h1>
+                <p>Gesture-to-Voice Telemetry</p>
+            </div>
+            <div class="controls">
+                <div class="status-badge disconnected" id="btStatus">
+                    <div class="status-dot"></div>
+                    <span id="btStatusText">Connected</span>
+                </div>
+                <button id="connectBtn" class="btn primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m7 7 10 10-5 5V2l5 5L7 17"></path>
+                    </svg>
+                    Connect Device
+                </button>
+                <button id="simulateBtn" class="btn secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Play
+                </button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+
+            <!-- Left: Live Sensor Values -->
+            <div class="card sensor-card glass-panel">
+                <h2>Flex Sensor Telemetry</h2>
+                <div class="sensor-bars">
+                    <div class="sensor-item">
+                        <div class="sensor-header">
+                            <label>Thumb</label>
+                            <span class="sensor-val" id="valThumb">0</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill thumb-color" id="barThumb" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-header">
+                            <label>Index</label>
+                            <span class="sensor-val" id="valIndex">0</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill index-color" id="barIndex" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-header">
+                            <label>Middle</label>
+                            <span class="sensor-val" id="valMiddle">0</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill middle-color" id="barMiddle" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-header">
+                            <label>Ring</label>
+                            <span class="sensor-val" id="valRing">0</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill ring-color" id="barRing" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-header">
+                            <label>Little</label>
+                            <span class="sensor-val" id="valLittle">0</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill little-color" id="barLittle" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center/Main: Gesture Detection -->
+            <div class="card gesture-card glass-panel">
+                <div class="card-header">
+                    <h2>Live Gesture Detection</h2>
+                    <div class="voice-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="voiceToggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                        <span>Voice Output</span>
+                    </div>
+                </div>
+
+                <div class="gesture-display-container">
+                    <div class="pulse-ring" id="pulseRing"></div>
+                    <div class="gesture-display" id="gestureDisplay">
+                        Waiting...
+                    </div>
+                </div>
+
+                <div class="gesture-stats">
+                    <div class="stat">
+                        <span class="stat-label">Confidence</span>
+                        <span class="stat-value" id="confidenceVal">--%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Response Time</span>
+                        <span class="stat-value" id="responseTimeVal">-- ms</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: History & Logs -->
+            <div class="side-panel">
+                <div class="card history-card glass-panel">
+                    <h2>Gesture History</h2>
+                    <ul id="historyList" class="history-list">
+                        <!-- History items injected via JS -->
+                        <li class="empty-state">No gestures detected yet.</li>
+                    </ul>
+                </div>
+
+                <div class="card terminal-card glass-panel">
+                    <h2>Data Stream</h2>
+                    <div class="terminal" id="terminal">
+                        <div class="terminal-line system">System initialized. Ready for connection.</div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
